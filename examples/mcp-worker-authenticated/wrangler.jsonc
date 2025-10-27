@@ -1,12 +1,14 @@
 {
-  "name": "mcp-worker-authenticated",
-  "main": "src/index.ts",
-  "compatibility_flags": ["nodejs_compat"],
-  "compatibility_date": "2025-10-08",
-  "kv_namespaces": [
-    {
-      "binding": "OAUTH_KV",
-      "id": "your-kv-namespace-id"
-    }
-  ]
+	"name": "mcp-worker-authenticated",
+	"main": "src/index.ts",
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	"compatibility_date": "2025-10-08",
+	"kv_namespaces": [
+		{
+			"binding": "OAUTH_KV",
+			"id": "54c7395f23774ec0831cb1918ecf6045"
+		}
+	]
 }
