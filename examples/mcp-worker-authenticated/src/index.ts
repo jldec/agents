@@ -74,7 +74,15 @@ server.tool(
  */
 const apiHandler = {
   async fetch(request: Request, env: unknown, ctx: ExecutionContext) {
-    return createMcpHandler(server)(request, env, ctx);
+    let parsedBody = undefined;
+    parsedBody = request.method === "POST" ? await request.json() : undefined;
+    console.log({
+      method: request.method,
+      url: request.url,
+      body: parsedBody,
+      authorization: request.headers.get("authorization")
+    });
+    return createMcpHandler(server)(request, env, ctx, parsedBody);
   }
 };
 

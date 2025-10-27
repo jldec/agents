@@ -25,14 +25,16 @@ export function experimental_createMcpHandler(
 ): (
   request: Request,
   env: unknown,
-  ctx: ExecutionContext
+  ctx: ExecutionContext,
+  parsedBody?: unknown
 ) => Promise<Response> {
   const route = options.route ?? "/mcp";
 
   return async (
     request: Request,
     _env: unknown,
-    ctx: ExecutionContext
+    ctx: ExecutionContext,
+    parsedBody?: unknown
   ): Promise<Response> => {
     // Check if the request path matches the configured route
     const url = new URL(request.url);
@@ -49,7 +51,7 @@ export function experimental_createMcpHandler(
     await server.connect(transport);
 
     const handleRequest = async () => {
-      return await transport.handleRequest(request);
+      return await transport.handleRequest(request, parsedBody);
     };
 
     try {
